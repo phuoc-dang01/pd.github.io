@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phuoc Dang</title>
+<meta name="description" content="Phuoc Dang — PhD student in Information Science at NJIT. Privacy in machine learning. Photographer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..650&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15161a;
+    --ink-soft:#4a4d57;
+    --paper:#f7f6f2;
+    --line:#d9d7cf;
+    --hair: rgba(21,22,26,.14);
+    --accent:#1a1c22;
+    --serif:"Newsreader", Georgia, serif;
+    --display:"Fraunces", "Newsreader", Georgia, serif;
+    --mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    --maxw: 720px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:19px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  img{max-width:100%;display:block}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    color:#f7f6f2;
+    overflow:hidden;
+  }
+  .hero__media{
+    position:absolute;
+    inset:0;
+    /* graceful fallback shows before hero.jpg is added */
+    background:
+      radial-gradient(120% 90% at 70% 10%, #2b2f3a 0%, #15161a 55%, #0c0d10 100%);
+    background-size:cover;
+    background-position:center;
+  }
+  /* When you add hero.jpg next to index.html, it loads automatically. */
+  .hero__media{
+    background-image:
+      linear-gradient(180deg, rgba(8,9,12,.10) 0%, rgba(8,9,12,.05) 40%, rgba(8,9,12,.72) 100%),
+      url("background.jpg"),
+      radial-gradient(120% 90% at 70% 10%, #2b2f3a 0%, #15161a 55%, #0c0d10 100%);
+  }
+  .hero__inner{
+    position:relative;
+    width:100%;
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px 9vh;
+  }
+  .hero__name{
+    font-family:var(--display);
+    font-variation-settings:"opsz" 144, "SOFT" 0, "WONK" 0;
+    font-weight:560;
+    font-size:clamp(3.2rem, 11vw, 6.4rem);
+    line-height:.94;
+    letter-spacing:-.018em;
+    margin:0;
+  }
+  .hero__role{
+    font-family:var(--mono);
+    font-size:.78rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    margin:1.4rem 0 0;
+    color:rgba(247,246,242,.86);
+  }
+  .hero__tag{
+    font-style:italic;
+    font-size:1.18rem;
+    margin:.5rem 0 0;
+    color:rgba(247,246,242,.82);
+  }
+  .cue{
+    position:absolute;
+    left:50%;
+    bottom:22px;
+    transform:translateX(-50%);
+    font-family:var(--mono);
+    font-size:.66rem;
+    letter-spacing:.22em;
+    color:rgba(247,246,242,.6);
+    text-transform:uppercase;
+  }
+
+  /* ---------- content ---------- */
+  main{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:0 28px;
+  }
+  .block{
+    padding:7vh 0;
+    border-bottom:1px solid var(--hair);
+  }
+  .block:last-of-type{border-bottom:0}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:0 0 1.6rem;
+  }
+  .lede{
+    font-size:1.32rem;
+    line-height:1.5;
+    margin:0;
+  }
+  .lede + .lede{margin-top:1.1rem}
+
+  /* publications */
+  ol.pubs{
+    list-style:none;
+    margin:0;
+    padding:0;
+    counter-reset:pub;
+  }
+  ol.pubs li{
+    display:grid;
+    grid-template-columns:2.4rem 1fr;
+    gap:.4rem 1rem;
+    padding:1.2rem 0;
+    border-top:1px solid var(--hair);
+    align-items:baseline;
+  }
+  ol.pubs li:first-child{border-top:0}
+  ol.pubs .idx{
+    font-family:var(--mono);
+    font-size:.82rem;
+    color:var(--ink-soft);
+  }
+  ol.pubs .ref{font-size:1.02rem;line-height:1.45}
+  ol.pubs .venue{color:var(--ink-soft)}
+  ol.pubs .me{font-weight:600}
+
+  /* photography grid */
+  .frames{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:.4rem;
+  }
+  .frame{
+    aspect-ratio:4/5;
+    background:linear-gradient(160deg,#e9e7df,#dad7ce);
+    border:1px solid var(--hair);
+  }
+  .note{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.04em;
+    color:var(--ink-soft);
+    margin-top:1rem;
+  }
+
+  /* contact */
+  .links{
+    list-style:none;
+    margin:1.2rem 0 0;
+    padding:0;
+  }
+  .links li{
+    border-top:1px solid var(--hair);
+    padding:.85rem 0;
+  }
+  .links a{
+    font-family:var(--mono);
+    font-size:.92rem;
+    text-decoration:none;
+    letter-spacing:.02em;
+    display:inline-flex;
+    gap:1rem;
+    align-items:baseline;
+  }
+  .links a span{color:var(--ink-soft);min-width:5.5rem;display:inline-block}
+  .links a:hover{text-decoration:underline;text-underline-offset:3px}
+
+  footer{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:4vh 28px 6vh;
+    font-family:var(--mono);
+    font-size:.7rem;
+    letter-spacing:.06em;
+    color:var(--ink-soft);
+  }
+
+  a:focus-visible, li a:focus-visible{
+    outline:2px solid var(--ink);
+    outline-offset:3px;
+  }
+
+  /* load motion */
+  .rise{opacity:0;transform:translateY(14px)}
+  .in .rise{opacity:1;transform:none;transition:opacity .9s ease, transform .9s ease}
+  .in .d1{transition-delay:.05s}
+  .in .d2{transition-delay:.18s}
+  .in .d3{transition-delay:.31s}
+
+  @media (max-width:560px){
+    body{font-size:18px}
+    .hero__inner{padding-bottom:11vh}
+    ol.pubs li{grid-template-columns:1fr}
+    ol.pubs .idx{margin-bottom:-.6rem}
+    .frames{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .rise{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero__media" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <h1 class="hero__name rise d1">Phuoc Dang</h1>
+      <p class="hero__role rise d2">PhD student · Information Science · NJIT</p>
+      <p class="hero__tag rise d3">Privacy in machine learning. And photographs.</p>
+    </div>
+    <div class="cue" aria-hidden="true">scroll</div>
+  </header>
+
+  <main>
+    <section class="block" id="about">
+      <p class="eyebrow">About</p>
+      <p class="lede">I'm a PhD student in Information Science at NJIT, studying privacy in machine learning. I study how representations carry information across distributed AI systems, how to quantify that leakage, and how to defend against it.</p>
+      <p class="lede">My current focus is embedding and hidden-state inversion attacks against split and hybrid inference. Before this, I spent four years applying machine learning to air traffic management.</p>
+    </section>
+
+    <section class="block" id="publications">
+      <p class="eyebrow">Selected publications</p>
+      <ol class="pubs">
+        <li><span class="idx">[1]</span><span class="ref">Shippey, S., Srinivasan, S., <span class="me">Dang, H. P.</span>, Aryafar, E., Chakareski, J. (2024). An Experimental Evaluation of 360-Degree ABR Video Streaming over mmWave Wireless Links. <span class="venue">MetaCom, IEEE.</span></span></li>
+        <li><span class="idx">[2]</span><span class="ref">Mohamed, M. A., <span class="me">Dang, H. P.</span>, Alam, S. (2023). A Supervised Learning Approach for 4D Air Traffic Conflict Prediction under Trajectory Uncertainty. <span class="venue">ITSC, IEEE.</span></span></li>
+        <li><span class="idx">[3]</span><span class="ref"><span class="me">Dang, H. P.</span>, Mohamed, M. A., Alam, S. (2023). Image-Based Conflict Detection with Convolutional Neural Network under Weather Uncertainty. <span class="venue">ICNS, IEEE.</span></span></li>
+        <li><span class="idx">[4]</span><span class="ref"><span class="me">Dang, H. P.</span>, Tran, P. N., Alam, S., Duong, V. N. (2021). A Machine Learning-Based Framework for Aircraft Maneuver Detection and Classification. <span class="venue">ATM Seminar.</span></span></li>
+      </ol>
+    </section>
+
+    <section class="block" id="photography">
+      <p class="eyebrow">Photography</p>
+      <p class="lede">I take photographs. A selection lives here soon.</p>
+      <div class="frames" aria-hidden="true">
+        <div class="frame"></div>
+        <div class="frame"></div>
+        <div class="frame"></div>
+      </div>
+      <p class="note">Replace these frames with your images, or link out to a gallery.</p>
+    </section>
+
+    <section class="block" id="contact">
+      <p class="eyebrow">Contact</p>
+      <ul class="links">
+        <li><a href="mailto:pd468@njit.edu"><span>Email</span>pd468@njit.edu</a></li>
+        <li><a href="#"><span>Scholar</span>Google Scholar</a></li>
+        <li><a href="#"><span>GitHub</span>github.com/your-handle</a></li>
+        <li><a href="#"><span>Based in</span>Newark, NJ</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>© <span id="yr"></span> Phuoc Dang</footer>
+
+  <script>
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    requestAnimationFrame(function(){ document.body.classList.add('in'); });
+  </script>
+</body>
+</html>
